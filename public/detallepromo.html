@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle Producto</title>
+  <link rel="stylesheet" href="detalle.css" />
+</head>
+<body>
+
+    <h1 id="nombreProducto">Nombre Producto</h1>
+
+    <h1 id="codigoProducto">Código Producto</h1>
+
+    <div class="imagen-contenedor">
+        <img
+            id="imagenProducto"
+            src=""
+            alt="Imagen del producto"
+            width="800"
+            height="600"
+        >
+    </div>
+
+    <div class="precios-contenedor">
+      <p id="precioProducto">Normal $0.00</p>
+      <p id="precioPromocion">Promoción: $0.00</p>
+    </div>
+
+    <p id="existenciaProducto">Disponibles: 0 unidades</p>
+
+    <div class="observaciones-contenedor">
+    <label for="observacionesProducto">Observaciones:</label>
+    <textarea id="observacionesProducto"
+              rows="5"
+              readonly
+              placeholder="Sin observaciones"></textarea>
+    </div>
+    
+    <script src="detallepromo.js"></script>
+</body>
+</html>

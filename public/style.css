@@ -1,0 +1,246 @@
+/* Estilos generales */
+:root {
+    --azul-oscuro: #173f6b;
+    --azul: #2468a2;
+    --azul-claro: #eaf3fb;
+    --borde: #d6e2ee;
+    --texto: #243447;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.encabezado {
+    display: flex;
+    align-items: left;
+    gap: 24px;
+    padding: 20px 5%;
+    background: #fff;
+}
+
+.logo {
+    display: block;
+    width: 150px;
+    height: 120px;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.encabezado h1 {
+    margin: 0;
+    color: var(--azul-oscuro);
+    font-size: clamp(1.35rem, 2.7vw, 2.35rem);
+    line-height: 1.2;
+    letter-spacing: 0.025em;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 0 5%;
+    background: var(--azul-oscuro);
+}
+
+.menu a {
+    display: block;
+    padding: 16px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.98rem;
+    transition: background-color 0.2s ease;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    background: var(--azul);
+    outline: none;
+}
+
+.contenido {
+    display: grid;
+    grid-template-columns: minmax(170px, 230px) minmax(0, 1fr);
+    gap: 28px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 28px auto;
+    padding: 0 5%;
+    flex: 1;
+    align-items: start;
+}
+
+.panel-grupos,
+.panel-productos {
+    min-width: 0;
+}
+
+#grupos,
+#Productos {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+#grupos th,
+#Productos th {
+    padding: 12px 14px;
+    background: var(--azul-claro);
+    color: var(--azul-oscuro);
+    text-align: left;
+    font-weight: 700;
+    border: 1px solid var(--borde);
+}
+
+#grupos td,
+#Productos td {
+    padding: 11px 14px;
+    border: 1px solid var(--borde);
+    text-align: left;
+}
+
+#Productos tbody tr:hover,
+#grupos tbody tr:hover {
+    background: #f7fbff;
+}
+
+.busqueda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px;
+}
+
+.busqueda label {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.busqueda input {
+    width: min(100%, 390px);
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #b9cddd;
+    border-radius: 5px;
+    color: var(--texto);
+    font: inherit;
+    outline: none;
+}
+
+.busqueda input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgb(36 104 162 / 14%);
+}
+
+.busqueda button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 40px;
+    padding: 8px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--azul);
+    cursor: pointer;
+}
+
+.busqueda button:hover {
+    background: var(--azul-oscuro);
+}
+
+.busqueda button svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+#Productos {
+    min-width: 560px;
+}
+
+#Productos th:first-child {
+    width: 110px;
+}
+
+#Productos th:nth-child(3) {
+    width: 120px;
+}
+
+#Productos th:last-child {
+    width: 100px;
+}
+
+footer {
+    margin-top: auto;
+    padding: 18px 20px;
+    background: var(--azul-oscuro);
+    color: #fff;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+    .encabezado {
+        gap: 14px;
+        padding: 16px 4%;
+    }
+
+    .logo {
+        width: 78px;
+        height: 68px;
+    }
+
+    .encabezado h1 {
+        font-size: 1.2rem;
+    }
+
+    .menu {
+        justify-content: flex-start;
+        padding: 0 3%;
+    }
+
+    .menu a {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+    }
+
+    .contenido {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin: 22px auto;
+        padding: 0 4%;
+    }
+
+    .panel-grupos {
+        max-width: none;
+    }
+}

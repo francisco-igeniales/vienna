@@ -1,0 +1,224 @@
+
+/* Configuración general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 35px 20px;
+    background: linear-gradient(135deg, #eef2f7, #dfe7f1);
+    color: #263445;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Nombre del producto */
+#nombreProducto {
+    width: 100%;
+    max-width: 900px;
+    margin: 0;
+    padding: 25px 30px 10px;
+    background: white;
+    border-radius: 16px 16px 0 0;
+    color: #17365d;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* Código del producto */
+#codigoProducto {
+    width: 100%;
+    max-width: 900px;
+    margin: 0;
+    padding: 5px 30px 25px;
+    background: white;
+    color: #68778a;
+    font-size: 19px;
+    font-weight: 500;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* Contenedor de la imagen */
+.imagen-contenedor {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px 30px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagen del producto */
+#imagenProducto {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    height: 450px;
+    object-fit: contain;
+    background-color: #f8fafc;
+    border: 1px solid #e5eaf0;
+    border-radius: 12px;
+}
+
+/* Precio */
+#precioProducto {
+    width: 100%;
+    max-width: 900px;
+    margin: 0;
+    padding: 25px 20px 10px;
+    background: white;
+    color: #061ef1;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+}
+
+/* Existencias */
+#existenciaProducto {
+    width: 100%;
+    max-width: 900px;
+    margin: 0;
+    padding: 10px 20px 30px;
+    background: white;
+    color: #45566b;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Contenedor de observaciones */
+.observaciones-contenedor {
+    width: 100%;
+    max-width: 900px;
+    margin: 0;
+    padding: 20px 30px 30px;
+    background: white;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 5px 15px rgba(30, 50, 80, 0.06);
+}
+
+/* Etiqueta de observaciones */
+.observaciones-contenedor label {
+    display: block;
+    margin-bottom: 12px;
+    color: #17365d;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Cuadro de observaciones */
+#observacionesProducto {
+    display: block;
+    width: 100%;
+    max-width: none;
+    min-height: 180px;
+    padding: 15px;
+    border: 1px solid #d5deea;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    color: #45566b;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+/* Sombras de los elementos */
+#nombreProducto,
+#codigoProducto,
+.imagen-contenedor,
+#precioProducto,
+#existenciaProducto {
+    box-shadow: 0 5px 15px rgba(30, 50, 80, 0.06);
+}
+
+/* Contenedor de ambos precios */
+.precios-contenedor {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 25px 20px 10px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(30, 50, 80, 0.06);
+}
+
+/* Estilo común para ambos precios */
+.precios-contenedor p {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    color: #061ef1;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#precioPromocion {
+    color: red !important;
+}
+
+/* Adaptación a celulares */
+@media (max-width: 600px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    #nombreProducto {
+        padding: 20px 15px 8px;
+        font-size: 25px;
+    }
+
+    #codigoProducto {
+        padding: 5px 15px 20px;
+        font-size: 16px;
+    }
+
+    .imagen-contenedor {
+        padding: 10px 15px;
+    }
+
+    #imagenProducto {
+        height: 280px;
+    }
+
+    #precioProducto {
+        padding-top: 20px;
+        font-size: 30px;
+    }
+
+    #existenciaProducto {
+        padding-bottom: 25px;
+        font-size: 17px;
+    }
+
+    .observaciones-contenedor {
+        padding: 15px;
+    }
+
+    #observacionesProducto {
+        min-height: 150px;
+        font-size: 15px;
+    }
+    .precios-contenedor {
+    gap: 12px;
+    padding: 20px 10px;
+    }
+
+    .precios-contenedor p {
+    font-size: 22px;
+    white-space: normal;
+    }
+}

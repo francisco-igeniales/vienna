@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora de Productos de Belleza Vienna</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="encabezado">
+        <img src="vienna.jpeg" alt="Logotipo de Vienna" class="logo">
+        <h1>Distribuidora de Productos de Belleza Vienna</h1>
+    </header>
+
+    <nav class="menu" aria-label="Menú principal">
+        <a href="index.html">Productos</a>
+        <a href="capacitaciones.html">Capacitaciones</a>
+        <a href="quienessomos.html">Quienes somos</a>
+        <a href="contactanos.html">Contactanos</a>
+        <a href="promociones.html">Promociones</a>
+    </nav>
+
+    <main class="contenido">
+        <aside class="panel-grupos">
+            <table id="grupos">
+                <thead>
+                    <tr><th>Grupo</th></tr>
+                </thead>
+                <tbody>
+                    <!-- Los grupos se pueden agregar aquí posteriormente. -->
+                </tbody>
+            </table>
+        </aside>
+
+        <section class="panel-productos" id="productos">
+            <form class="busqueda" role="search">
+                <label for="buscar">Buscar:</label>
+                <input type="search" id="buscar" name="buscar" aria-label="Buscar productos">
+                <button id="btnBuscar" aria-label="Buscar" title="Buscar" type="button">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                        <path d="M16 16 21 21"></path>
+                    </svg>
+                </button>
+            </form>
+
+            <div class="tabla-contenedor">
+                <table id="Productos">
+                    <thead>
+                        <tr>
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Disponibles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los productos se mostrarán aquí posteriormente. -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2026 vienna</p>
+    </footer>
+    <script type="module">
+        import { muestragrupos } from './muestragrupos.js';
+        import { muestraproductos } from './muestraproductos.js';
+        import { muestracoincide } from './muestracoincide.js';
+        try {
+        await muestragrupos();
+        await muestraproductos('90');
+         } catch (error) {
+           console.error("Error al cargar los datos iniciales:", error);
+         }
+
+        // Configurar el evento del botón de búsqueda
+    const btnBuscar = document.getElementById("btnBuscar");
+    btnBuscar.addEventListener("click", async (e) => {
+        e.preventDefault(); // Evita que el formulario recargue la página
+        const palabra = document.getElementById('buscar').value.trim();
+        
+        if (palabra !== "") {
+            await muestracoincide(palabra);
+        }
+       });
+
+    </script>
+</body>
+</html>

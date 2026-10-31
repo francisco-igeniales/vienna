@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamento</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+
+        .dato {
+            margin-bottom: 15px;
+        }
+
+        .etiqueta {
+            font-weight: bold;
+        }
+
+        .lectura {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+.lectura .etiqueta {
+    font-weight: bold;
+}
+
+    #pantallaCaptura {
+        width: 380px;
+        height: 60px;
+        border: 2px solid #333;
+        background-color: #f5f5f5;
+        font-size: 60px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        padding: 5px 10px;
+        margin-top: 10px;
+        color: blue;
+    }
+
+    #mensaje {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: blue;
+    }       
+
+    button {
+    display: block;
+    margin: 20px auto;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+} 
+
+    </style>
+</head>
+
+<body>
+    <h1>Avance de lotes de produccion por codigo de barras</h1>
+
+    <div class="lectura">
+    <span class="etiqueta">Lectura:</span>
+    <div id="pantallaCaptura"></div>
+    </div>
+
+    <div class="dato">
+        <span class="etiqueta">Origen:</span>
+        <span id="codigo"></span>
+        <span id="nombre"></span>
+    </div>
+
+    <div class="dato">
+        <span class="etiqueta">Destino:</span>
+        <span id="SiguienteDepto"></span>
+        <span id="NombreDestino"></span>
+    </div>
+
+
+    <div class="dato">
+        <span class="etiqueta">Programa:</span>
+        <span id="Programa"></span>
+    </div>
+
+    <div class="dato">
+        <span class="etiqueta">Lote:</span>
+        <span id="Lote"></span>
+    </div>
+
+    <div class="dato">
+        <span class="etiqueta">Estilo:</span>
+        <span id="Estilo"></span>
+    </div>
+
+    <div class="dato">
+        <span class="etiqueta">Pares:</span>
+        <span id="Pares"></span>
+    </div>
+
+
+
+  
+
+    <div id="mensaje"></div>
+
+    <button onclick="history.back()">Regresar</button>
+
+    <script type="module">
+        // Obtener los parámetros de la URL
+        const parametros = new URLSearchParams(window.location.search);
+
+        const codigo = parametros.get('codigo');
+        const nombre = parametros.get('nombre');
+
+
+        //Importamos
+         import { cargadatoslote } from './cargadatoslote.js';
+         import { procesaravance } from './procesaravance.js';
+         import { horaEnCentesimas } from './horaEnCentesimas.js';
+         import { carganombredestino } from './carganombredestino.js';
+
+        // Mostrar los datos
+        document.getElementById('codigo').textContent = codigo;
+        document.getElementById('nombre').textContent = nombre;
+
+        //Script para la lectura del codigo de barras
+         const pantalla = document.getElementById('pantallaCaptura');
+         const mensaje = document.getElementById('mensaje');
+
+         let caracteres = '';
+
+         document.addEventListener('keydown', async function(event) {
+
+             // Si ya tenemos 9 caracteres, no aceptar más
+             if (caracteres.length >= 9) {
+                 return;
+             }
+
+             // Solo aceptar números 0 - 9
+             if (/^[0-9]$/.test(event.key)) {
+
+                 caracteres += event.key;
+
+                 pantalla.textContent = caracteres;
+                 //                  012345678 
+                 // ¿Llegamos a 9?   000125896
+                 if (caracteres.length === 9) {
+                     mensaje.textContent = 'Procesando..........';
+                     // Los primeros cuatro caracteres
+                     let progleido = caracteres.substring(0, 4);
+                     // Los restantes 5 caracteres 
+                     let loteleido = caracteres.substring(4, 9);
+                     const registro = await cargadatoslote(codigo, progleido, loteleido);
+                     if (registro) {
+
+                        document.getElementById('Programa').textContent       = registro.lc_prog;
+                        document.getElementById('Lote').textContent           = registro.lc_lote;
+                        document.getElementById('Estilo').textContent         = registro.lc_estilo;
+                        document.getElementById('SiguienteDepto').textContent = registro.siguiente_depto;
+                        document.getElementById('Pares').textContent          = registro.lc_parlot;
+                        document.getElementById('NombreDestino').textContent  = registro.nom_depdes;
+                        mensaje.textContent = '';
+
+                           
+                        const horacentesima = horaEnCentesimas();
+
+                        // Procesar avance del lote
+                        const resultado = await procesaravance(
+                         registro.lc_prog,
+                         registro.lc_lote,
+                         registro.siguiente_depto,
+                         codigo,
+                         horacentesima,
+                         '',
+                         ''                      
+                        );
+                        if (resultado) {
+                            mensaje.textContent = 'Avance registrado correctamente';
+                            caracteres = '';
+                            pantalla.textContent = '';
+
+                        } else {
+                             mensaje.textContent = 'ERROR al registrar el avance';
+                        }
+
+                    } else{
+                        document.getElementById('Programa').textContent       = 'ERROR';
+                        document.getElementById('Lote').textContent           = 'ERROR';
+                        document.getElementById('Estilo').textContent         = 'ERROR';
+                        document.getElementById('SiguienteDepto').textContent = 'ERROR';
+                        document.getElementById('Pares').textContent          = '0'
+                        mensaje.textContent = 'Programa y Lote no localizados';
+                        caracteres = '';
+                        pantalla.textContent = '';
+                    } // Del If Registro
+                    
+                 }
+             }
+             // Backspace para borrar el último carácter
+             if (event.key === 'Backspace') {
+
+                 caracteres = caracteres.slice(0, -1);
+
+                 pantalla.textContent = caracteres;
+
+                 mensaje.textContent = '';
+             }
+
+         });
+    </script>
+</body>
+</html>

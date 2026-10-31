@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contáctanos - Distribuidora de Productos de Belleza Vienna</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 35px 20px;
+            background: linear-gradient(135deg, #eef2f7, #dfe7f1);
+            color: #263445;
+        }
+
+        /* Título principal */
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: black;
+            margin: 0 0 12px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            font-size: 18px;
+            margin: 0 0 35px;
+            color: #475569;
+        }
+
+        /* Distribución general */
+        .contenedor-principal {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        /* Tarjetas */
+        .tarjeta {
+            background: white;
+            padding: 25px;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+        }
+
+        .tarjeta h2 {
+            font-size: 23px;
+            color: #000080;
+            margin: 0 0 22px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #dbe3ee;
+        }
+
+        /* Información de contacto */
+        .dato-contacto {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .icono {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eef2ff;
+            color: #000080;
+            border-radius: 8px;
+            font-size: 22px;
+        }
+
+        .dato-contacto h3 {
+            font-size: 17px;
+            margin: 0 0 6px;
+            color: #263445;
+        }
+
+        .dato-contacto p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .telefonos a {
+            display: block;
+            color: #000080;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+        .telefonos a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mapa */
+        .mapa-contenedor {
+            margin-top: 20px;
+        }
+
+        .mapa-contenedor h3 {
+            font-size: 18px;
+            margin: 0 0 12px;
+            color: #263445;
+        }
+
+        .mapa {
+            width: 100%;
+            height: 280px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* Formulario */
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: #263445;
+        }
+
+        .campo input,
+        .campo textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #b8c4d4;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 16px;
+            color: #263445;
+            background: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .campo input:focus,
+        .campo textarea:focus {
+            outline: none;
+            border-color: #000080;
+            box-shadow: 0 0 0 3px rgba(0, 0, 128, 0.10);
+        }
+
+        .campo textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* Botón */
+        .boton-enviar {
+            width: 100%;
+            padding: 14px;
+            background: #000080;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .boton-enviar:hover {
+            background: #00005a;
+        }
+
+        .nota-formulario {
+            font-size: 13px;
+            color: #64748b;
+            margin: 14px 0 0;
+            line-height: 1.5;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* Adaptación a teléfonos y tabletas */
+        @media (max-width: 800px) {
+            .contenedor-principal {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 25px 14px;
+            }
+
+            .tarjeta {
+                padding: 20px;
+            }
+
+            .tarjeta h2 {
+                font-size: 21px;
+            }
+
+            .mapa {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Distribuidora de Productos de Belleza Vienna</h1>
+        <p class="subtitulo">Estamos para atenderte y ayudarte a encontrar lo que necesitas.</p>
+    </header>
+
+    <main class="contenedor-principal">
+
+        <!-- Información de contacto y mapa -->
+        <section class="tarjeta">
+
+            <h2>Información de contacto</h2>
+
+            <div class="dato-contacto">
+                <div class="icono" aria-hidden="true">📍</div>
+                <div>
+                    <h3>Dirección</h3>
+                    <p>
+                        Sevilla # 1401 Local 2<br>
+                        Col. San Juan Bosco
+                    </p>
+                </div>
+            </div>
+
+            <div class="dato-contacto">
+                <div class="icono" aria-hidden="true">💬</div>
+                <div>
+                    <h3>WhatsApp</h3>
+                    <div class="telefonos">
+                        <a href="https://wa.me/524771798824"
+                           target="_blank" rel="noopener noreferrer">
+                            477 179 88 24
+                        </a>
+                        <a href="https://wa.me/524772630975"
+                           target="_blank" rel="noopener noreferrer">
+                            477 263 09 75
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mapa-contenedor">
+                <h3>Encuéntranos aquí</h3>
+
+
+                <iframe
+                  class="mapa"
+                  src="https://maps.google.com/maps?q=21.1357156,-101.7067985&z=19&output=embed"
+                  title="Ubicación de Distribuidora de Productos de Belleza Vienna"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen>
+               </iframe>
+
+            </div>
+
+        </section>
+
+        <!-- Formulario de contacto -->
+        <section class="tarjeta">
+
+            <h2>Envíanos un mensaje</h2>
+
+            <form id="formularioContacto">
+
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Escribe tu nombre completo"
+                        autocomplete="name"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefono">Teléfono</label>
+                    <input
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Ej. 477 123 45 67"
+                        autocomplete="tel"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="dudas">Dudas o productos de interés</label>
+                    <textarea
+                        id="dudas"
+                        name="dudas"
+                        placeholder="Cuéntanos qué productos te interesan o cómo podemos ayudarte..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="boton-enviar">
+                    Enviar mensaje
+                </button>
+
+                <p class="nota-formulario">
+                    Completa tus datos y cuéntanos cómo podemos ayudarte.
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Distribuidora de Productos de Belleza Vienna
+    </footer>
+
+    <script>
+
+        document.getElementById('formularioContacto')
+            .addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const datos = {
+
+                    nombre: document.getElementById('nombre').value,
+
+                    telefono: document.getElementById('telefono').value,
+
+                    email: document.getElementById('correo').value,
+
+                    mensaje: document.getElementById('dudas').value
+                };
+                
+                const respuesta = await fetch('/api/guardamensaje', {
+
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+
+                    body: JSON.stringify(datos)
+                });
+
+                const resultado = await respuesta.json();
+
+                alert(resultado.mensaje);
+
+            });
+    </script>
+
+</body>
+</html>
